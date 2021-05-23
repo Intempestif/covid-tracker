@@ -36,7 +36,7 @@
 
 include "navbar.php";
 
-include "compteur.php";
+include "stats-recup.php";
 
 include "stats.php";
 

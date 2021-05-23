@@ -94,6 +94,20 @@ $mondeGuerisons = array_sum($totalGuerisonsPays);
         <div class="main_text">
             <h1 class="main_first_text"><i class="fas fa-virus"></i> Covid Tracker <i class="fas fa-virus"></i></h1>
             <h3 class="main_third_text mt-5">Statistiques du Covid-19</h3>
+            <div>données sources mises à jour toutes les heures</div>
+
+            <?php
+
+            $data = json_decode($json, true);
+
+            foreach ($data as $value) {
+                $lastCheck = $value['time'];
+            }
+
+            ?>
+
+            <div>dernière m.a.j : <?= $lastCheck ?></div>
+
         </div>
         <div class="img_shadow"></div>
     </div>
