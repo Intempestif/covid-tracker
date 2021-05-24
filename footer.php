@@ -9,6 +9,13 @@
                     <a class="font-weight-bold" href="https://www.coronavirus-statistiques.com/open-data/" target="blank">
                         DONNEES SOURCE
                     </a>
+
+                    <p class="mt-4">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            * liste des pays pris en compte
+                        </button>                    
+                    </p>
+                    
                     <p class="mt-4">
                         Développé par <a href="http://boughaba.simplon-charleville.fr/pprod/portfolio/" target="blank"><b>Nabil Boughaba</b></a>, <a href="https://remyherbourg.fr/" target="blank"><b>Rémy Herbourg</b></a> & <a href="https://www.tanguydespat.com/" target="blank"><b>Tanguy Despat</b></a>
                     </p>

@@ -5,10 +5,10 @@ $array = json_decode($data,true);
 
 $listePays = ["france","italie","uk","espagne","allemagne","suisse","belgique","nl","canada","usa","coree","maroc","russie","japon","algerie","tunisie","australie","nouvelle-zelande","argentine","mexique",
 "equateur","colombie","irlande","islande","inde","pakistan","bangladesh","singapour","suede","norvege","finlande","danemark","cameroun","burkina_fasso","afrique_du_sud","cote_d_ivoir","sri_lanka","israel","arabie_saoudite","egypte","uae","liban",
-"turquie","laos","indonesie","vietnam","bresil","portugal","grece","thailande","chili","perou","ukraine","bielorussie","pologne","iran","estonie","lettonie","luxembourg","taiwan","La Réunion","Saint-Barthélemy",
+"turquie","laos","indonesie","vietnam","bresil","portugal","grece","thailande","chili","perou","ukraine","bielorussie","pologne","iran","estonie","lettonie","luxembourg","taiwan",
 "Saint-Martin","Wallis et Futuna","Polynésie française","Nouvelle-Calédonie"];
 
-// STATS DU MONDE
+// * STATS DU MONDE
 
 $mondeCas = 0;
 $mondeDeces = 0;
@@ -29,11 +29,8 @@ foreach($array as $value){
 
                 $lieuActuel = $value['nom'];
                 $totalCasP = intval($value['cas']);
-                // var_dump($totalCasP);
                 $totalDecesP = intval($value['deces']);
                 $totalGuerisonsP = intval($value['guerisons']);
-
-                // echo "lieu : " .$lieuActuel ." Cas : " .$totalCasP ."<br/>";
 
             }
 
@@ -45,8 +42,6 @@ foreach($array as $value){
         $totalCasP = intval($value['cas']);
         $totalDecesP = intval($value['deces']);
         $totalGuerisonsP = intval($value['guerisons']);
-
-        // echo "lieu : " .$lieuActuel ." Cas : " .$totalCasP ."<br/>";
 
     }
     else if($lieuActuel != $value['nom']) {
@@ -65,8 +60,6 @@ foreach($array as $value){
                 $totalDecesP = intval($value['deces']);
                 $totalGuerisonsP = intval($value['guerisons']);
 
-                // echo "lieu : " .$lieuActuel ." Cas : " .$totalCasP ."<br/>";
-
             }
 
         }
@@ -77,10 +70,6 @@ foreach($array as $value){
     }
 
 }
-
-// var_dump($listePays);
-// var_dump($totalCasPays);
-// var_dump($lieux);
 
 $mondeCas = array_sum($totalCasPays);
 $mondeDeces = array_sum($totalDecesPays);
@@ -94,7 +83,6 @@ $mondeGuerisons = array_sum($totalGuerisonsPays);
         <div class="main_text">
             <h1 class="main_first_text"><i class="fas fa-virus"></i> Covid Tracker <i class="fas fa-virus"></i></h1>
             <h3 class="main_third_text mt-5">Statistiques du Covid-19</h3>
-            <div>données sources mises à jour toutes les heures</div>
 
             <?php
 
@@ -112,7 +100,7 @@ $mondeGuerisons = array_sum($totalGuerisonsPays);
         <div class="img_shadow"></div>
     </div>
 
-    <div class="container-fluid p-0 world-container mb-4">
+    <div class="container-fluid p-0 world-container">
 
         <div class="row p-0 m-0 w-100">
 
@@ -122,7 +110,7 @@ $mondeGuerisons = array_sum($totalGuerisonsPays);
                     <i class="fas fa-globe"></i>
                 </span>
                 <h2 class="text-compteur font-weight-bold text-center mt-4 mt-md-0">
-                    Statistiques Mondiales 
+                    Statistiques Mondiales *
                 </h2>
 
             </div>
@@ -168,21 +156,52 @@ $mondeGuerisons = array_sum($totalGuerisonsPays);
 
     </div>
 
+    <div class="row w-100 m-0 p-0">
+    
+        <div class="col-12 p-5 bande1">
+            
+            <?php
+            if(isset($_SESSION['pays']) && isset($_SESSION['annee'])) {
+
+                ?>
+
+                <h2 class="text-center" id="paysH2"></h2>
+
+                <?php
+
+            }
+
+            else {
+
+                ?>
+
+                <h3 class="text-center">Erreur de chargement, veuillez rafraichir, si le problème persiste, veuillez contacter l'administrateur du site.</h3>
+
+                <?php
+
+            }
+
+            ?>
+        
+        </div>
+
+    </div>
+
     <div class="container-md p-0">
     
-        <div class="row m-0 p-0 pb-4 filtres">
+        <div class="row w-100 m-0 p-0 filtres">
 
-            <div class="col-12 col-md-12">
+            <div class="col-12 p-3">
 
-                <!-- * FILTRES -->
+                <!-- // * FILTRES -->
             
-                <h5 class="font-weight-bold"><i class="far fa-chart-line"></i> Filtres :</h5>
+                <h5 class="font-weight-bold"><i class="fas fa-exchange-alt"></i> Changer</h5>
 
-                <form action="" method="post" class="">
+                <span id="changeSuccess"></span>
 
-                    <!-- <label for="lieu-select">Choisir un lieu :</label> -->
+                <form action="" method="post" class="m-0 p-0 d-flex flex-column flex-md-row justify-content-center align-items-center">
 
-                    <select name="lieu" id="lieu-select">
+                    <select class="mb-2 mt-2 mt-md-0 mb-md-0" name="lieu" id="lieu-select">
 
                         <?php
 
@@ -218,16 +237,14 @@ $mondeGuerisons = array_sum($totalGuerisonsPays);
 
                     </select>
 
-                    <!-- <label class="mt-3" for="annee-select">Choisir une année :</label> -->
-
-                    <select name="annee" id="annee-select">
+                    <select class="ml-3 mb-2 mb-md-0" name="annee" id="annee-select">
 
                         <option value="2020">2020</option>
                         <option value="2021">2021</option>
 
                     </select>
 
-                    <input class="mt-4 ml-3" type="submit" name="submit" value="Rafraichir" />
+                    <input id="buttonRefresh" class="ml-3 btn btn-primary m-0 align-middle" type="button" name="submit" value="Changer" />
 
                 </form>
 
@@ -235,38 +252,187 @@ $mondeGuerisons = array_sum($totalGuerisonsPays);
 
         </div>
 
-        <div class="row p-0 m-0">
+        <script>
 
-            <div class="col-12 mt-5 mb-5">
-                
-                <?php
-                if(isset($_POST['lieu']) && isset($_POST['annee'])) {
+            window.onload = function() {
 
-                    ?>
+                $('#buttonRefresh').on('click', function() {
+                    refreshStats();
+                });
 
-                    <h2 class="mb-5 text-center"><?php echo $_POST['lieu'] ." / " .$_POST['annee']?></h2>
+                var GlobalCas = [];
+                var GlobalDeces = [];
+                var GlobalMois = [];
 
-                    <?php
+                refreshStats();
+
+            };
+
+            function refreshStats() {
+
+                var annee = $('#annee-select option:selected').val();
+                var pays = $('#lieu-select option:selected').val();
+
+                $.ajax({
+                    url: "ajax/dynamicStats.php",
+                    method: "POST",
+                    data: { pays: pays, annee: annee },
+                    success: function(html){
+                        
+                        var ajaxArray = html.split(',');
+                        document.getElementById("changeSuccess").innerHTML = "Changement effectué pour " + ajaxArray[0] + " en " + ajaxArray[1];
+                        $('#paysH2').text(ajaxArray[0] + " en " + ajaxArray[1]);
+
+                    }
+                });
+
+                $.ajax({
+                    url: "ajax/dynamicStats2.php",
+                    // * je mets async: false car sans ça je n'arrive pas à ecrire dans mes array GlobalCas etc
+                    async: false,
+                    method: "POST",
+                    data: { },
+                    success: function(html){
+
+                        var ajaxArray2 = html.split('/');
+
+                        var ajaxArray2Cas = ajaxArray2[1].split(',');
+                        ajaxArray2Cas[0] = ajaxArray2Cas[0].substring(1,ajaxArray2Cas[0].length);
+                        ajaxArray2Cas[ajaxArray2Cas.length-1] = ajaxArray2Cas[ajaxArray2Cas.length-1].slice(0,-1);
+                        
+                        GlobalCas = ajaxArray2Cas;
+
+                        var ajaxArray2Deces = ajaxArray2[2].split(',');
+                        ajaxArray2Deces[0] = ajaxArray2Deces[0].substring(1,ajaxArray2Deces[0].length);
+                        ajaxArray2Deces[ajaxArray2Deces.length-1] = ajaxArray2Deces[ajaxArray2Deces.length-1].slice(0,-1);
+
+                        GlobalDeces = ajaxArray2Deces;
+
+                        var ajaxArray2Mois = ajaxArray2[0].split(',');
+                        ajaxArray2Mois[0] = ajaxArray2Mois[0].substring(1,ajaxArray2Mois[0].length);
+                        ajaxArray2Mois[ajaxArray2Mois.length-1] = ajaxArray2Mois[ajaxArray2Mois.length-1].slice(0,-1);
+
+                        GlobalMois = ajaxArray2Mois;
+
+                        var cible = 0;
+
+                        $('.totalCas').each(function( index ) {
+
+                            for(let i=1;i<=12;i++){
+                                if($(this).attr("id") == "totalCas"+i) {
+
+                                    if(ajaxArray2Mois[cible] == i) {
+                                        
+                                        this.innerHTML = ajaxArray2Cas[cible];
+                                        cible = cible + 1;
+
+                                    }
+                                    else {
+                                        this.innerHTML = "pas de données"
+                                    }
+
+                                }
+                                
+                            }
+                        });
+
+                        var cible = 0;
+
+                        $('.totalDeces').each(function( index ) {
+
+                            for(let i=1;i<=12;i++){
+                                if($(this).attr("id") == "totalDeces"+i) {
+
+
+                                    if(ajaxArray2Mois[cible] == i) {
+                                        
+                                        this.innerHTML = ajaxArray2Deces[cible];
+                                        cible = cible + 1;
+
+                                    }
+                                    else {
+                                        this.innerHTML = "pas de données"
+                                    }
+
+                                }
+                                
+                            }
+                        });
+
+                    }
+                });
+
+                function verif1(mois,cas,deces){
+
+                    console.log(mois + "\\" + cas + "\\" + deces);
 
                 }
 
+                generateChart();
+
+            }
+            function generateChart(){
+
+                const labels = GlobalMois;
+
+                const data = {
+                labels: labels,
+                datasets: [
+                {
+                    label: 'nombre de cas',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: GlobalCas,
+                },
+                {
+                    label: 'nombre de décès',
+                    backgroundColor: 'rgb(149, 224, 108)',
+                    borderColor: 'rgb(149, 224, 108)',
+                    data: GlobalDeces,
+                },
+                ]
+                };
+
+                const config = {
+                type: 'line',
+                data,
+                options: {}
+                };
+
+                if($('#myChart').display == "none") {
+
+                    var myChart = new Chart(
+                        document.getElementById('myChart'),
+                        config
+                    );
+
+                }
                 else {
 
-                    ?>
+                    document.getElementById('canvasParent').innerHTML = "";
+                    document.getElementById('canvasParent').innerHTML = "<canvas id='myChart' style='min-height: 200px;'></canvas>";
 
-                    <h2 class="mb-5 text-center">Belgique / 2020</h2>
-
-                    <?php
-
+                    var myChart = new Chart(
+                        document.getElementById('myChart'),
+                        config
+                    );
                 }
 
-                ?>
+            }
+            
+        </script>
 
-                <canvas id="myChart"></canvas>
+        <div class="row p-0 m-0">
+
+            <div id="canvasParent" class="col-12 mt-5 mb-5">
+
+                <!-- CANVAS DU GRAPHIQUE CHARTS.JS -->
+
+                <canvas id="myChart" style="display: none;"></canvas>
 
             </div>
 
-            <div class="col-12 mt-5 mb-5 text-center">
+            <div id="tableStats" class="col-12 mt-5 mb-5 text-center">
 
                 <table class="table table-striped table-bordered">
 
@@ -283,62 +449,18 @@ $mondeGuerisons = array_sum($totalGuerisonsPays);
                     <tbody>
 
                     <?php
-                    foreach($array as $value){
-
-                        $date = date_parse($value['date']);
-                        $jour = $date['day'];
-                        $mois = $date['month'];
-                        $annee = $date['year'];
-
-                        if(isset($_POST['lieu']) && isset($_POST['annee'])){
-
-                            if($value['nom'] == $_POST['lieu'] && $annee == $_POST['annee']){
-
-                                for($i=1;$i<=12;$i++){
-
-                                    if($mois == $i) {
-
-                                        $totalCas[$i] = $value["cas"];
-                                        $totalDeces[$i] = $value["deces"];
-
-                                    }
-
-                                }
-
-                            }
-
-                        }
-                        else if($value['nom'] == "belgique" && $annee == '2020') {
-                            
-                            for($i=1;$i<=12;$i++){
-
-                                if($mois == $i) {
-
-                                    $totalCas[$i] = $value["cas"];
-                                    $totalDeces[$i] = $value["deces"];
-
-                                }
-
-                            }
-
-                        }
-
-                    }
-
+                    
                     for($i=1;$i<=12;$i++){
+                        
+                        ?>
 
-                        if(isset($totalCas[$i])) {
-    
-                            ?>
-    
-                            <tr>
-                                <th scope="row"><?= $i ?></th>
-                                <td><?= $totalCas[$i] ?></td>
-                                <td><?= $totalDeces[$i] ?></td>
-                            </tr>
-    
-                            <?php
-                        }
+                        <tr>
+                            <th scope="row"><?= $i ?></th>
+                            <td class="totalCas" id="totalCas<?= $i ?>">test</td>
+                            <td class="totalDeces" id="totalDeces<?= $i ?>">test</td>
+                        </tr>
+
+                        <?php
 
                     }
 
@@ -349,22 +471,9 @@ $mondeGuerisons = array_sum($totalGuerisonsPays);
                 </table>
 
             </div>
-
-            <?php
-            include "covid.php";
-            ?>
         
         </div>
     
     </div>
 
 </div>
-
-<script>
-
-    var myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
-
-</script>
