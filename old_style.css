@@ -1,0 +1,54 @@
+.titre {
+    /* background-color: lightgrey; */
+    color: black;
+    /* border-bottom: 2px solid black; */
+}
+
+.filtres {
+    border-bottom: 1px solid black;
+}
+
+/* Compteur du monde */
+
+.world-container {
+    background-image: linear-gradient(to right, #C9000B 0%, #C9000B 35%, #F86161 100%);
+    color: white;
+}
+
+.text-compteur{
+    font-size: 2.5rem;
+}
+
+.fa-globe {
+    font-size: 5.5rem !important;
+}
+
+.world-compteur {
+    font-size: 1.5rem;
+}
+
+/* * NAVBAR */
+
+#navbar {
+    background-image: linear-gradient(to right, #C9000B 0%, #C9000B 35%, #F86161 100%);
+    color: white;
+    border-radius: 0px;
+}
+
+.navbar-brand {
+    font-size: 1.8em;
+}
+
+.container {
+    max-width: 1600px !important;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar-brand,
+.nav-link {
+    color: white;
+}
