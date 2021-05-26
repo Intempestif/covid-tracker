@@ -1,164 +1,327 @@
-body {
-  overflow: overlay;
-  max-width: 100vw;
-  overflow-x: hidden;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0px;
-    padding: 0px;
-    overflow-x: hidden; 
-}
-
-/* Scrollbar */
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(90, 90, 90);
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.2);
-}
-/* NAVBAR */
-
-#navbar {
-  background-image: linear-gradient(to right, #83a4d4, #0bd6e0);
-  color: white;
-  border-radius: 0px;
-}
-
-.navbar-brand {
-  font-size: 1.8em;
-}
-
-.container {
-  max-width: 1600px !important;
-}
-
-#navbar a {
-  text-decoration: none;
-  color: white;
-}
-
-.navbar-brand,
-.nav-link {
-  color: white;
-}
-
-/* la suite de tanguy */
-
-.titre {
-  background-color: lightgrey;
-  color: black;
-  border: 2px solid black;
-}
-
-.filtres {
-  border-bottom: 1px solid black;
-}
-
-.bande1 {
-  background: #CDCDCD;
-}
-
-/* Home */
-
-.home {
-  height: calc(100vh - 256px - 69px);
-  background-image: url("https://holbornassets.com/wp-content/uploads/2020/05/covid.jpg");
-  position: relative;
-  background-position: center;
-}
-
-.img_shadow {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: rgba(0, 0, 0, .4);
-  background-image: linear-gradient(to top, rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .2) 100%);
-  height: 100%;
-}
-
-.main_text {
-  color: whitesmoke;
-  z-index: 2;
-  position: relative;
-}
-
-/* Compteur du monde */
-
-.world-container {
-  background-image: linear-gradient(to right, #83a4d4, #0bd6e0);
-  color: white;
-}
-
-.text-compteur {
-  /* font-size: 1.5em; */
-}
-
-.fa-globe {
-  font-size: 4em !important;
-}
-
-.world-compteur {
-  font-size: 1.5em;
-}
-
-/* FOOTER */
-.footer ul {
-  list-style: none;
-}
-
-.footer {
-  background-image: linear-gradient(to right, #83a4d4, #0bd6e0);
-  color: black;
-  font-size: 1.2em;
-}
-
-.footer-col ul li a:hover::after {
-  transform: scale(1);
-}
-
-@media (max-width: 991.98px) {
-  .home {
-    height: calc(100vh - 69px);
-  }
-  .home h1 {
-    font-size: 3em;
-  }
-  .home h2 {
-    font-size: 1.5em;
-  }
-}
-
-@media (max-width: 767.98px) {
-  .home h1 {
-    font-size: 2em;
-  }
-  .home h2 {
-    font-size: 1.5em;
-  }
-  .home h3 {
-    font-size: 1.2em;
-  }
-
-  ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
-    }
-}
-
-#myChart {
-  min-height: 260px;
+body {
+
+  overflow: overlay;
+
+  max-width: 100vw;
+
+  overflow-x: hidden;
+
+  font-size: 16px;
+
+  box-sizing: border-box;
+
+}
+
+
+
+html, body {
+
+  width: 100%;
+
+  height: 100%;
+
+  margin: 0px;
+
+    padding: 0px;
+
+    overflow-x: hidden; 
+
+}
+
+
+
+/* Scrollbar */
+
+
+
+::-webkit-scrollbar {
+
+  width: 10px;
+
+  height: 10px;
+
+}
+
+
+
+::-webkit-scrollbar-thumb {
+
+  background: rgba(90, 90, 90);
+
+}
+
+
+
+::-webkit-scrollbar-track {
+
+  background: rgba(0, 0, 0, 0.2);
+
+}
+
+/* NAVBAR */
+
+
+
+#navbar {
+
+  background-image: linear-gradient(to right, #83a4d4, #0bd6e0);
+
+  color: white;
+
+  border-radius: 0px;
+
+}
+
+
+
+.navbar-brand {
+
+  font-size: 1.8em;
+
+}
+
+
+
+.container {
+
+  max-width: 1600px !important;
+
+}
+
+
+
+#navbar a {
+
+  text-decoration: none;
+
+  color: white;
+
+}
+
+
+
+.navbar-brand,
+
+.nav-link {
+
+  color: white;
+
+}
+
+
+
+/* la suite de tanguy */
+
+
+
+.titre {
+
+  background-color: lightgrey;
+
+  color: black;
+
+  border: 2px solid black;
+
+}
+
+
+
+.filtres {
+
+  border-bottom: 1px solid black;
+
+}
+
+
+
+.bande1 {
+
+  background: #CDCDCD;
+
+}
+
+
+
+/* Home */
+
+
+
+.home {
+
+  height: calc(100vh - 256px - 69px);
+
+  background-image: url("https://holbornassets.com/wp-content/uploads/2020/05/covid.jpg");
+
+  position: relative;
+
+  background-position: center;
+
+}
+
+
+
+.img_shadow {
+
+  position: absolute;
+
+  top: 0;
+
+  bottom: 0;
+
+  right: 0;
+
+  left: 0;
+
+  background: rgba(0, 0, 0, .4);
+
+  background-image: linear-gradient(to top, rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .2) 100%);
+
+  height: 100%;
+
+}
+
+
+
+.main_text {
+
+  color: whitesmoke;
+
+  z-index: 2;
+
+  position: relative;
+
+}
+
+
+
+/* Compteur du monde */
+
+
+
+.world-container {
+
+  background-image: linear-gradient(to right, #83a4d4, #0bd6e0);
+
+  color: white;
+
+}
+
+
+
+.text-compteur {
+
+  /* font-size: 1.5em; */
+
+}
+
+
+
+.fa-globe {
+
+  font-size: 4em !important;
+
+}
+
+
+
+.world-compteur {
+
+  font-size: 1.5em;
+
+}
+
+
+
+/* FOOTER */
+
+.footer ul {
+
+  list-style: none;
+
+}
+
+
+
+.footer {
+
+  background-image: linear-gradient(to right, #83a4d4, #0bd6e0);
+
+  color: black;
+
+  font-size: 1.2em;
+
+}
+
+
+
+.footer-col ul li a:hover::after {
+
+  transform: scale(1);
+
+}
+
+
+
+@media (max-width: 991.98px) {
+
+  .home {
+
+    height: calc(100vh - 69px);
+
+  }
+
+  .home h1 {
+
+    font-size: 3em;
+
+  }
+
+  .home h2 {
+
+    font-size: 1.5em;
+
+  }
+
+}
+
+
+
+@media (max-width: 767.98px) {
+
+  .home h1 {
+
+    font-size: 2em;
+
+  }
+
+  .home h2 {
+
+    font-size: 1.5em;
+
+  }
+
+  .home h3 {
+
+    font-size: 1.2em;
+
+  }
+
+
+
+  ::-webkit-scrollbar {
+
+    width: 0px;
+
+    background: transparent; /* make scrollbar transparent */
+
+    }
+
+}
+
+
+
+#myChart {
+
+  min-height: 260px;
+
 }
